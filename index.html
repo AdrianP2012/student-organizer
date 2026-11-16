@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple student organizer for homework, tasks and schedules.">
+  <title>Student Organizer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Student Organizer home">
+        <span class="brand-mark">S</span>
+        <span>Student<span class="brand-light">Hub</span></span>
+      </a>
+      <p class="nav-label">WORKSPACE</p>
+      <nav aria-label="Main navigation">
+        <button class="nav-link active" data-view="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-link" data-view="tasks"><span>✓</span> My tasks</button>
+        <button class="nav-link" data-view="schedule"><span>▤</span> Schedule</button>
+      </nav>
+      <div class="sidebar-note">
+        <div class="note-icon">✦</div>
+        <strong>One step at a time.</strong>
+        <p>Keep your schoolwork organised and make room for everything else.</p>
+      </div>
+      <div class="sidebar-footer">A student project · 2026</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="today-label">YOUR STUDY SPACE</p>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        <div class="date-chip" id="today-date"></div>
+      </header>
+
+      <section class="view active" id="dashboard-view">
+        <div class="welcome-card">
+          <div>
+            <p class="eyebrow light">WELCOME TO YOUR WORKSPACE</p>
+            <h2>Make today<br>count.</h2>
+            <p class="welcome-copy">A clearer view of your schoolwork starts here.</p>
+            <button class="primary-button" data-go="tasks">View my tasks <span>→</span></button>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="art-circle"></div>
+            <div class="art-card card-back"></div>
+            <div class="art-card card-front">
+              <div class="art-check">✓</div>
+              <div class="art-line long"></div>
+              <div class="art-line"></div>
+              <div class="art-line short"></div>
+              <div class="art-pill"></div>
+            </div>
+            <div class="sparkle sparkle-one">✦</div>
+            <div class="sparkle sparkle-two">✧</div>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <div><p class="eyebrow">OVERVIEW</p><h2>Your progress</h2></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-icon blue">✓</div>
+            <p class="stat-label">Tasks remaining</p>
+            <strong id="remaining-count">0</strong>
+            <span class="stat-foot">Still on your list</span>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon green">↗</div>
+            <p class="stat-label">Tasks completed</p>
+            <strong id="completed-count">0</strong>
+            <span class="stat-foot">Good work so far</span>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon purple">▣</div>
+            <p class="stat-label">Total tasks</p>
+            <strong id="total-count">0</strong>
+            <span class="stat-foot">Across all subjects</span>
+          </article>
+        </div>
+
+        <div class="lower-grid">
+          <section class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">UP NEXT</p><h2>Upcoming tasks</h2></div><button class="text-button" data-go="tasks">See all →</button></div>
+            <div id="upcoming-list" class="upcoming-list"><p class="empty-state">No tasks yet. Add your first task to get started.</p></div>
+          </section>
+          <section class="panel focus-panel">
+            <p class="eyebrow">A QUICK REMINDER</p>
+            <h2>Small steps<br>add up.</h2>
+            <p>Break bigger assignments into smaller tasks. It makes getting started easier.</p>
+            <div class="focus-decoration">✦</div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="tasks-view">
+        <div class="section-heading tasks-intro">
+          <div><p class="eyebrow">STAY ON TRACK</p><h2>My tasks</h2><p class="muted">Add homework, assignments and anything you need to remember.</p></div>
+        </div>
+        <form id="task-form" class="add-task-form">
+          <div class="field"><label for="task-title">Task name</label><input id="task-title" name="title" maxlength="90" placeholder="e.g. Finish maths questions" required></div>
+          <div class="field"><label for="task-subject">Subject</label><input id="task-subject" name="subject" maxlength="35" placeholder="e.g. Mathematics"></div>
+          <div class="field"><label for="task-due">Due date</label><input id="task-due" name="due" type="date"></div>
+          <button class="primary-button add-button" type="submit">+ Add task</button>
+        </form>
+        <div class="task-toolbar"><div class="filter-tabs"><button class="filter-tab active" data-filter="all">All</button><button class="filter-tab" data-filter="active">To do</button><button class="filter-tab" data-filter="completed">Completed</button></div><span class="muted small" id="task-summary">0 tasks</span></div>
+        <div id="task-list" class="task-list"><div class="empty-card"><span>✦</span><h3>Your list is clear.</h3><p>Add a task above and it will appear here.</p></div></div>
+      </section>
+
+      <section class="view" id="schedule-view">
+        <div class="section-heading"><div><p class="eyebrow">PLAN YOUR WEEK</p><h2>Weekly schedule</h2><p class="muted">A starter timetable you can customise as we build the next version.</p></div></div>
+        <div class="schedule-notice">This is a sample timetable. It is not connected to the FIS school calendar.</div>
+        <div class="schedule-grid">
+          <div class="schedule-head">DAY</div><div class="schedule-head">PERIOD 1</div><div class="schedule-head">PERIOD 2</div><div class="schedule-head">PERIOD 3</div>
+          <div class="day">Monday</div><div>Mathematics</div><div>English</div><div>Science</div>
+          <div class="day">Tuesday</div><div>German</div><div>History</div><div>Mathematics</div>
+          <div class="day">Wednesday</div><div>Science</div><div>English</div><div>Art</div>
+          <div class="day">Thursday</div><div>History</div><div>Mathematics</div><div>German</div>
+          <div class="day">Friday</div><div>English</div><div>Science</div><div>Physical Education</div>
+        </div>
+      </section>
+      <footer class="main-footer">StudentHub <span>·</span> Organise your school life, one task at a time.</footer>
+    </main>
+  </div>
+</body>
+</html>
